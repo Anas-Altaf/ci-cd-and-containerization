@@ -1,4 +1,4 @@
-name: Deploy Portfolio
+name: CI/CD Pipeline
 
 on:
   push:
@@ -14,16 +14,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Build Docker image
-      - name: Build Docker Image
-        run: docker build -t devportfolio .
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
 
-      # Push Docker image to Docker Hub
-      - name: Push to Docker Hub
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the application
+      - name: Build the application
+        run: npm run build
+
+      # Deploy to Railway
+      - name: Deploy to Railway
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-          docker tag devportfolio <your-dockerhub-username>/devportfolio:latest
-          docker push <your-dockerhub-username>/devportfolio:latest
+          npm install -g railway
+          railway up --token $RAILWAY_TOKEN

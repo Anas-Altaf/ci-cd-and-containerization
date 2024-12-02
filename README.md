@@ -165,7 +165,7 @@ This setup ensures a consistent build process whether running locally or in CI/C
 For additional help or configuration options, check the 
 testing.md file.
 ---
-##Participants
+## Participants
 - [Umair Altaf  (22F-3737)](https://github.com/umairaltaf982)
 
 - [Anas Altaf  (22F-3639)](https://github.com/Anas-Altaf)

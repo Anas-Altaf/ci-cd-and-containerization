@@ -25,8 +25,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t anas-altaf/ci-cd-and-containerization:${{ github.sha }} .
+          docker build -t anasaltaf35/ci-cd-and-containerization:${{ github.sha }} .
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push anas-altaf/ci-cd-and-containerization:${{ github.sha }}
+          docker push anasaltaf35/ci-cd-and-containerization:${{ github.sha }}

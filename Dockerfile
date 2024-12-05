@@ -1,11 +1,17 @@
-# Use the official Nginx image
-FROM nginx:alpine
+# Use a base image with Java
+FROM openjdk:11
 
-# Copy the website files to Nginx's default directory
-COPY . /usr/share/nginx/html
+# Set the working directory
+WORKDIR /app
 
-# Expose port 80
-EXPOSE 80
+# Copy the project files
+COPY . /app
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Install Maven (if not in the base image)
+RUN apt-get update && apt-get install -y maven
+
+# Build the Maven project
+RUN mvn clean install
+
+# Default command to run tests
+CMD ["mvn", "test"]

@@ -1,7 +1,6 @@
-// ExpenseControllerTest.java
+package com.expensetracker;// com.expensetracker.ExpenseControllerTest.java
 
 import com.expensetracker.controllers.ExpenseController;
-import com.expensetracker.models.Expense;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-// ExpenseTest.java
+package com.expensetracker;// com.expensetracker.ExpenseTest.java
 
 import com.expensetracker.models.Expense;
 import org.junit.jupiter.api.Test;
